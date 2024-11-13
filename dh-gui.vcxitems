@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <DhGuiSourceRoot>$(MSBuildThisFileDirectory)src</DhGuiSourceRoot>
+
+    <DhGuiShaderOutput>$(IntDir)dh_gui_shaders\</DhGuiShaderOutput>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(DhGuiSourceRoot);$(DhGuiShaderOutput);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\atomic_owning_ptr.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\atomic_shared_ptr.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\filesystem.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\format.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\from_chars.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\io\atomic_file.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\io\file_reader.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\io\file_writer.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\memory.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\string.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\core\dh\thread.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\input\input_state.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\log\log.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\platform\clipboard.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\platform\strings.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\reactive\runtime.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\render\d3d11_renderer.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\render\font_atlas.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\render\image_decoder.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\render\image_preparation.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\render\image_texture.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\render\path_geometry.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\animation\driver.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\animation\tween.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\button.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\color_picker.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\combobox.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\groupbox.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\hscroll_view.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\icon_button.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\label.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\list_link.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\listbox.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\managed_combobox.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\multi_combobox.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\scroll_view.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\slider.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\slot_strip.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\sub_tabs.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\text_input.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\controls\toggle.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\core\control.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\core\frame_ctx.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\layout\stack.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\menu\shell.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\overlay\hud_list.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\overlay\panel_placement.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\painter\painter.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\popup\handle.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\popup\layer.cpp" />
+    <ClCompile Include="$(DhGuiSourceRoot)\ui\theme\theme.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_checker_ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_checker_vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_image_ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_text_ps.hlsl">
+      <ShaderType>Pixel</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_text_vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+    <FxCompile Include="$(DhGuiSourceRoot)\render\shaders\overlay_vs.hlsl">
+      <ShaderType>Vertex</ShaderType>
+      <ShaderModel>5.0</ShaderModel>
+      <EntryPointName>main</EntryPointName>
+      <HeaderFileOutput>$(DhGuiShaderOutput)%(Filename).h</HeaderFileOutput>
+      <VariableName>g_%(Filename)_bytecode</VariableName>
+      <ObjectFileOutput></ObjectFileOutput>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </FxCompile>
+  </ItemGroup>
+</Project>

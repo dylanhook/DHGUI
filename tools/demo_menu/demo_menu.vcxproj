@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<ItemGroup Label="ProjectConfigurations">
+		<ProjectConfiguration Include="Debug|x64">
+			<Configuration>Debug</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+		<ProjectConfiguration Include="Release|x64">
+			<Configuration>Release</Configuration>
+			<Platform>x64</Platform>
+		</ProjectConfiguration>
+	</ItemGroup>
+	<PropertyGroup Label="Globals">
+		<VCProjectVersion>17.0</VCProjectVersion>
+		<ProjectGuid>{6F3A1C2E-7B4D-4E8A-9C11-2D5E8F0A3B71}</ProjectGuid>
+		<RootNamespace>demo_menu</RootNamespace>
+		<WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+	<PropertyGroup Label="Configuration">
+		<ConfigurationType>Application</ConfigurationType>
+		<PlatformToolset>v143</PlatformToolset>
+		<CharacterSet>Unicode</CharacterSet>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+		<UseDebugLibraries>true</UseDebugLibraries>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+		<UseDebugLibraries>false</UseDebugLibraries>
+		<WholeProgramOptimization>true</WholeProgramOptimization>
+	</PropertyGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+	<PropertyGroup>
+		<OutDir>$(ProjectDir)output\$(Configuration)\</OutDir>
+		<IntDir>$(ProjectDir)output\$(Configuration)\obj\</IntDir>
+		<TargetName>demo_menu</TargetName>
+	</PropertyGroup>
+	<ImportGroup Label="Shared">
+		<Import Project="..\..\dh-gui.vcxitems" Label="Shared" />
+	</ImportGroup>
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<WarningLevel>Level4</WarningLevel>
+			<TreatWarningAsError>true</TreatWarningAsError>
+			<ConformanceMode>true</ConformanceMode>
+			<LanguageStandard>stdcpplatest</LanguageStandard>
+			<DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+			<SDLCheck>true</SDLCheck>
+			<PreprocessorDefinitions>_WINDOWS;UNICODE;_UNICODE;NOMINMAX;WIN32_LEAN_AND_MEAN;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+			<ExceptionHandling>false</ExceptionHandling>
+			<RuntimeTypeInfo>false</RuntimeTypeInfo>
+			<FloatingPointModel>Precise</FloatingPointModel>
+			<ControlFlowGuard>Guard</ControlFlowGuard>
+			<BufferSecurityCheck>true</BufferSecurityCheck>
+			<PrecompiledHeader>Use</PrecompiledHeader>
+			<PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+			<ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
+			<AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+			<MultiProcessorCompilation>true</MultiProcessorCompilation>
+			<AdditionalOptions>/Zc:threadSafeInit- /Zc:preprocessor /bigobj /utf-8 %(AdditionalOptions)</AdditionalOptions>
+		</ClCompile>
+		<Link>
+			<SubSystem>Windows</SubSystem>
+			<GenerateDebugInformation>true</GenerateDebugInformation>
+			<AdditionalDependencies>d3d11.lib;dxgi.lib;dwrite.lib;d2d1.lib;windowscodecs.lib;ole32.lib;shell32.lib;user32.lib;synchronization.lib;%(AdditionalDependencies)</AdditionalDependencies>
+		</Link>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+		<ClCompile>
+			<Optimization>Disabled</Optimization>
+			<RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+			<PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+		</ClCompile>
+	</ItemDefinitionGroup>
+	<ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+		<ClCompile>
+			<Optimization>MaxSpeed</Optimization>
+			<FunctionLevelLinking>true</FunctionLevelLinking>
+			<IntrinsicFunctions>true</IntrinsicFunctions>
+			<RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+			<PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+		</ClCompile>
+		<Link>
+			<EnableCOMDATFolding>true</EnableCOMDATFolding>
+			<OptimizeReferences>true</OptimizeReferences>
+			<LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+		</Link>
+	</ItemDefinitionGroup>
+	<ItemGroup>
+		<ClCompile Include="src\pch.cpp">
+			<PrecompiledHeader>Create</PrecompiledHeader>
+		</ClCompile>
+		<ClCompile Include="src\app.cpp" />
+		<ClCompile Include="src\debug_logger.cpp" />
+		<ClCompile Include="src\device.cpp" />
+		<ClCompile Include="src\main.cpp" />
+		<ClCompile Include="src\pages.cpp" />
+		<ClCompile Include="src\png_writer.cpp" />
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="src\app.h" />
+		<ClInclude Include="src\debug_logger.h" />
+		<ClInclude Include="src\device.h" />
+		<ClInclude Include="src\pages.h" />
+		<ClInclude Include="src\pch.h" />
+		<ClInclude Include="src\png_writer.h" />
+	</ItemGroup>
+	<Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

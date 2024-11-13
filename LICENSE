@@ -1,0 +1,171 @@
+DHGUI Proprietary License v1.0
+Copyright (c) 2024 dylanhook. All rights reserved.
+
+1. DEFINITIONS
+
+   "Software" means the DHGUI framework, including its source code,
+   compiled binaries, examples, shaders, assets, and documentation, to
+   the extent owned by the Copyright Holder and supplied under this
+   license. Separately licensed third-party materials are excluded and
+   remain subject to their own licenses.
+
+   "Copyright Holder" means dylanhook and any authorized successors or
+   assigns of the rights covered by this license.
+
+   "You" means the individual or legal entity exercising permissions
+   granted by this license.
+
+2. GRANT OF PERMISSION
+
+   Subject to this license, the Copyright Holder grants you a worldwide,
+   non-exclusive, royalty-free, revocable license to:
+
+   a) Use, copy, compile, run, and study the Software for personal,
+      educational, business, or commercial purposes;
+   b) Modify, adapt, and create derivative works of the Software;
+   c) Incorporate the Software into your own projects, products, and
+      services, including private and closed-source projects;
+   d) Distribute, give away, or sell original or modified copies of the
+      Software, in source or binary form, independently or as part of
+      another product or service.
+
+   No payment, advance approval, or publication of your own source code
+   is required. These permissions continue until terminated or revoked
+   under this license.
+
+3. DISTRIBUTION AND NOTICES
+
+   You must preserve this license and the Copyright Holder's copyright
+   notices in copies and substantial portions of the Software. Binary
+   distributions must include them in accompanying documentation, a
+   license file, or an accessible legal-notices section. Visible credit
+   in your application's interface is not required.
+
+   You must not misrepresent authorship of the original Software or
+   present your modifications as an official release by the Copyright
+   Holder. Modified distributions must identify that they were modified.
+
+   You may choose terms for your own original code and modifications,
+   but may not replace this license for the underlying Software or
+   promise irrevocable rights to it. Every recipient receives permission
+   for the underlying Software directly from the Copyright Holder under
+   this license, subject to its conditions and revocation provisions.
+
+   Selling or distributing a copy does not transfer ownership of the
+   Software or authority to grant additional rights on the Copyright
+   Holder's behalf.
+
+4. OWNERSHIP
+
+   The Copyright Holder retains ownership of the original Software and
+   all rights not expressly granted here. This license does not assign
+   copyright or place the Software in the public domain.
+
+   You retain ownership of your independently authored code and original
+   modifications, subject to the Copyright Holder's rights in any
+   underlying Software. The Copyright Holder does not acquire ownership
+   of your separate application merely because it uses the Software.
+
+   No trademark rights or endorsement are granted by this license.
+
+5. REVOCATION AT THE COPYRIGHT HOLDER'S DISCRETION
+
+   To the extent permitted by applicable law, the Copyright Holder may
+   revoke any or all permissions granted by this license from any
+   identified individual or entity, at any time, for any reason or no
+   reason, without having to establish a breach, provide an explanation,
+   give advance notice, make a prior demand, or offer a period to cure.
+
+   To the extent permitted by applicable law, revocation takes effect
+   immediately upon an affirmative act by the Copyright Holder expressly
+   withdrawing permission and identifying the affected recipient. No
+   particular form of communication or separate notice to the recipient
+   is required. That act may include an oral or written communication,
+   a public statement, or a removal request sent to a hosting provider,
+   marketplace, distributor, or other intermediary that expressly states
+   that the identified recipient's permission is revoked.
+
+   A removal request may therefore be the first communication of
+   revocation; this license does not require a separate warning first.
+   Any notice or other procedure required by applicable law still applies.
+   This provision does not establish that a particular use infringes
+   copyright or require a third party to honor a removal request.
+
+   Upon revocation, the identified recipient must:
+
+   a) Stop using, running, copying, modifying, compiling, and distributing
+      the Software, including versions incorporated into other products;
+   b) Stop offering or supplying products or services containing or
+      operating the Software, unless the Software is first removed;
+   c) Delete or destroy copies of the Software under their possession or
+      control, except copies that applicable law requires them to retain.
+      Such retained copies may not be used for any other purpose.
+
+   You may continue using your own separate code after removing the
+   Software and material derived from it. Revocation does not transfer
+   ownership of your code to the Copyright Holder.
+
+   Revocation applies prospectively. It does not retroactively make acts
+   authorized before its effective date unauthorized. It does not, by
+   itself, terminate another recipient's independently granted license.
+   The Copyright Holder may separately revoke that recipient's license
+   under this section.
+
+   An identified recipient cannot avoid revocation by obtaining another
+   copy, version, or fork of the Software through another account,
+   distributor, intermediary, or person acting on their behalf. Permission
+   is restored only by the Copyright Holder's express written agreement.
+
+6. TERMINATION FOR BREACH
+
+   Permissions under this license terminate automatically if you fail
+   to comply with its conditions. The cessation and deletion obligations
+   in Section 5 also apply upon termination for breach.
+
+   The Copyright Holder may reinstate permission in writing. Continued
+   availability of the Software does not itself reinstate permission.
+
+   Sections 3 through 10 survive termination or revocation to the extent
+   necessary to give effect to their terms. Their survival does not
+   restore any terminated permission.
+
+7. NO WARRANTY
+
+   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SOFTWARE IS
+   PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS
+   FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. THE COPYRIGHT HOLDER
+   HAS NO OBLIGATION TO PROVIDE SUPPORT, MAINTENANCE, OR UPDATES.
+
+8. LIMITATION OF LIABILITY
+
+   TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COPYRIGHT HOLDER
+   SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING
+   FROM THE SOFTWARE OR ITS USE, DISTRIBUTION, MODIFICATION, TERMINATION,
+   OR REVOCATION, WHETHER IN CONTRACT, TORT, OR OTHERWISE. THIS INCLUDES
+   LOSS OF DATA, PROFITS, OR BUSINESS AND DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, OR CONSEQUENTIAL DAMAGES.
+
+9. GOVERNING LAW AND SEVERABILITY
+
+   Subject to mandatory applicable law, this license is governed by the
+   laws of the State of Texas, United States, without regard to conflict
+   of law principles. Disputes arising under this license are subject to
+   the exclusive jurisdiction of courts of competent jurisdiction in
+   Texas.
+
+   If a provision is held invalid or unenforceable, the remaining
+   provisions continue in effect to the extent permitted by law.
+   Nothing in this license limits rights or exceptions that applicable
+   law does not permit the Copyright Holder to restrict.
+
+10. ENTIRE AGREEMENT
+
+    This license states the terms of the permissions granted here.
+    Separate written agreements with the Copyright Holder remain
+    effective according to their own terms. A later publication or
+    revision of this license does not by itself amend an existing grant;
+    revocation of that grant is governed by Section 5.
+
+For permissions or inquiries, contact dylanhook through the official
+DHGUI repository.
