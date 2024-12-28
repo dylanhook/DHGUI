@@ -377,8 +377,18 @@ namespace dh {
         static constexpr size_type k_alignment = alignof(T) < alignof(void*) ? alignof(void*) : alignof(T);
 
         [[nodiscard]] size_type growth_capacity(size_type new_capacity) const noexcept {
-            if (new_capacity > k_max_elements) dh::alloc_failed("dh::vector::grow_to: size overflow");
-            return new_capacity;
+            if (new_capacity > k_max_elements) {
+                dh::alloc_failed("dh::vector::grow_to: size overflow");
+            }
+            size_type target = m_capacity == 0 ? size_type{4} : m_capacity;
+            while (target < new_capacity) {
+                if (target > k_max_elements / 2) {
+                    target = new_capacity;
+                    break;
+                }
+                target *= 2;
+            }
+            return target;
         }
 
         [[nodiscard]] static T* allocate_storage(size_type count) noexcept {
