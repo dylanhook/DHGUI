@@ -457,11 +457,31 @@ namespace dh {
         }
 
         [[nodiscard]] size_type locate(const K& key) const noexcept {
-            for (size_type index = 0; index < m_entries.size(); ++index) {
-                const entry& slot = m_entries[index];
-                if (slot.hash != k_empty_hash && slot.key() == key) return index;
+            if (m_entries.size() == 0) {
+                return k_not_found;
             }
-            return k_not_found;
+            const u64 hash_value = compute_hash(key);
+            const size_type mask = m_entries.size() - 1;
+            size_type bucket = static_cast<size_type>(hash_value) & mask;
+            size_type distance = 0;
+
+            for (;;) {
+                const entry& slot = m_entries[bucket];
+                if (slot.hash == k_empty_hash) {
+                    return k_not_found;
+                }
+                if (slot.probe_distance < distance) {
+                    return k_not_found;
+                }
+                if (slot.hash == hash_value && slot.key() == key) {
+                    return bucket;
+                }
+                bucket = (bucket + 1) & mask;
+                ++distance;
+                if (distance >= m_entries.size()) {
+                    return k_not_found;
+                }
+            }
         }
 
         template <typename... Args> emplace_result emplace_impl(K&& key, Args&&... args) noexcept {
