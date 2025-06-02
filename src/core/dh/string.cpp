@@ -365,16 +365,24 @@ namespace dh {
     }
 
     template <typename CharT> basic_string<CharT>& basic_string<CharT>::append(const CharT* s, size_type n) noexcept {
-        if (n == 0) return *this;
+        if (n == 0) {
+            return *this;
+        }
         if (s == nullptr) dh::fail_fast("dh::string::append: null source", FAST_FAIL_INVALID_ARG);
+        // s can point into this string, keep its offset in case grow_to moves the buffer.
+        const auto source = reinterpret_cast<dh::u64>(s);
+        const auto base = reinterpret_cast<dh::u64>(buffer());
+        const bool borrowed = source >= base && source - base <= size() * sizeof(CharT);
+        const size_type offset = borrowed ? (source - base) / sizeof(CharT) : 0;
         const size_type old_size = size();
         if (n > k_max_elements - old_size) dh::alloc_failed("dh::string::append: size overflow");
-        // copy first, s can point into this string.
-        const basic_string<CharT> stable{s, n};
         const size_type new_size = old_size + n;
-        if (new_size > capacity()) grow_to(new_size);
+        if (new_size > capacity()) {
+            grow_to(new_size);
+        }
         CharT* dst = buffer();
-        dh::memcpy(dst + old_size, stable.buffer(), n * sizeof(CharT));
+        if (borrowed) s = dst + offset;
+        dh::memmove(dst + old_size, s, n * sizeof(CharT));
         dst[new_size] = CharT{};
         set_size(new_size);
         return *this;
