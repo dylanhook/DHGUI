@@ -53,12 +53,25 @@ namespace dh::ui::animation {
 
         void tick(float dt) noexcept {
             if (dt <= 0.0f) return;
+
+            const dh::size_t count = g_tweens.size();
             dh::size_t index = 0;
-            while (index < g_tweens.size()) {
-                tween* const current = g_tweens[index];
-                if (current->advance_value(dt)) ++index;
-                else detail::unregister_tween(current);
+            for (; index < count; ++index) {
+                if (!g_tweens[index]->advance_value(dt)) break;
             }
+            if (index == count) return;
+            g_tweens[index]->m_active_slot = tween::k_not_registered;
+            dh::size_t retained = index;
+            for (++index; index < count; ++index) {
+                tween* const current = g_tweens[index];
+                if (!current->advance_value(dt)) {
+                    current->m_active_slot = tween::k_not_registered;
+                    continue;
+                }
+                current->m_active_slot = static_cast<dh::u32>(retained);
+                g_tweens[retained++] = current;
+            }
+            g_tweens.resize(retained);
         }
 
     }
