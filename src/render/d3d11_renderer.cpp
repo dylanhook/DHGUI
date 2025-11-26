@@ -644,12 +644,20 @@ namespace dh::render {
                 if (seg_has_images) {
                     bind_pipeline(pipeline::image);
                     bind_vertices(m_image_vertex_buffer.Get(), sizeof(text_vertex));
-                    for (dh::size_t i = s.image_begin; i < s.image_end; ++i) {
+                    dh::size_t i = s.image_begin;
+                    while (i < s.image_end) {
                         auto* const srv = m_pending_image_srvs[i].Get();
+                        dh::size_t run_end = i + 1;
+                        while (run_end < s.image_end && m_pending_image_srvs[run_end].Get() == srv) {
+                            ++run_end;
+                        }
                         if (srv != nullptr) {
                             bind_resource(srv);
-                            m_context->Draw(static_cast<UINT>(k_verts_per_image), static_cast<UINT>(i * k_verts_per_image));
+                            const UINT vcount = static_cast<UINT>((run_end - i) * k_verts_per_image);
+                            const UINT vstart = static_cast<UINT>(i * k_verts_per_image);
+                            m_context->Draw(vcount, vstart);
                         }
+                        i = run_end;
                     }
                 }
             }

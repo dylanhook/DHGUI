@@ -8,7 +8,7 @@ ui framework for windows / direct3d 11, written in c++23
 
 open `tools/demo_menu/demo_menu.vcxproj` in visual studio and build release / x64
 
-you need the v143 c++ tools and a windows sdk installed
+you need the v145 c++ tools and a windows sdk installed
 
 the demo will be in `tools/demo_menu/output/Release/demo_menu.exe`
 
