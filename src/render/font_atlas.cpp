@@ -647,11 +647,10 @@ namespace dh::render {
         if ((flow != text_flow::trim && flow != text_flow::wrap) || (flow == text_flow::wrap && width <= 0.0f) || (alignment != text_alignment::left && alignment != text_alignment::center && alignment != text_alignment::right))
             return dh::unexpected{atlas_failure{atlas_error::invalid_width, E_INVALIDARG}};
         const layout_key key{text, width, flow, alignment};
-        for (auto& entry : m_layouts) {
-            if (entry.last_used && layout_key{entry.text, entry.limit, entry.flow, entry.alignment} == key) {
-                entry.last_used = ++m_clock;
-                return &entry;
-            }
+        if (const auto* slot = m_layout_index.find(key)) {
+            auto& entry = m_layouts[*slot];
+            entry.last_used = ++m_clock;
+            return &entry;
         }
         dh::array<wchar_t, k_max_text_bytes> wide{};
         int length = 0;
