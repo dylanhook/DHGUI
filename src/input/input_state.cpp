@@ -27,14 +27,10 @@ namespace dh::input {
     }
 
     dh::optional<dh::size_t> input_state::mouse_index(unsigned int vk) noexcept {
-        switch (vk) {
-            case VK_LBUTTON: return 0;
-            case VK_RBUTTON: return 1;
-            case VK_MBUTTON: return 2;
-            case VK_XBUTTON1: return 3;
-            case VK_XBUTTON2: return 4;
-            default: return dh::nullopt;
+        for (dh::size_t index = 0; index < k_mouse_button_count; ++index) {
+            if (static_cast<unsigned int>(k_mouse_buttons[index]) == vk) return index;
         }
+        return dh::nullopt;
     }
 
     void input_state::set_bit(key_bitset& bits, unsigned int vk) noexcept {
