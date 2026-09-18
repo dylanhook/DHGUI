@@ -156,8 +156,12 @@ namespace dh {
     }
 
     template <typename Iter, typename Compare> constexpr void sort_by(Iter first, Iter last, Compare cmp) noexcept(noexcept(cmp(*first, *first))) {
-        if (last - first < 2) return;
-        detail::insertion_sort(first, last, cmp);
+        const dh::ptrdiff_t n = last - first;
+        if (n < 2) {
+            return;
+        }
+        int depth = 2 * detail::log2_floor(static_cast<dh::size_t>(n));
+        detail::introsort_loop(first, last, depth, cmp);
     }
 
     template <typename Iter> constexpr void sort_by(Iter first, Iter last) noexcept(noexcept(*first < *first)) {
