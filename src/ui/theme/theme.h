@@ -126,7 +126,7 @@ namespace dh::ui::theme {
 
         int scroll_bar_w{4};
         int scroll_thumb_min{18};
-        int hscroll_bottom_padding{0};
+        int hscroll_bottom_padding{3};
 
         int field_text_inset{8};
         int popup_row_text_inset{8};
