@@ -180,14 +180,24 @@ namespace dh::ui {
         }
     }
 
-    void painter::card_frame(rect r, int header_h, const theme::palette& pal, math::color accent) noexcept {
-        static_cast<void>(header_h);
-        static_cast<void>(accent);
+    void painter::group_frame(rect r, float title_left, float title_right, const theme::palette& pal) noexcept {
         if (r.w <= 0.0f || r.h <= 0.0f) return;
         const float hair = hairline();
-        filled_rect(r, pal.group_border_outer);
-        filled_rect(r.inset(hair), pal.group_bg);
-        outlined_rect(r.inset(hair), pal.group_border_inner, hair);
+        filled_rect(r.inset(hair * 2.0f), pal.group_bg);
+
+        const auto border = [&](rect edge, math::color color) noexcept {
+            if (edge.w <= 0.0f || edge.h <= 0.0f) return;
+            const float thickness = dh::min(hair, dh::min(edge.w, edge.h) * 0.5f);
+            const float gap_left = dh::clamp(title_left, edge.x, edge.right());
+            const float gap_right = dh::clamp(title_right, gap_left, edge.right());
+            filled_rect({edge.x, edge.y, gap_left - edge.x, thickness}, color);
+            filled_rect({gap_right, edge.y, edge.right() - gap_right, thickness}, color);
+            filled_rect({edge.x, edge.y + thickness, thickness, edge.h - thickness * 2.0f}, color);
+            filled_rect({edge.right() - thickness, edge.y + thickness, thickness, edge.h - thickness * 2.0f}, color);
+            filled_rect({edge.x, edge.bottom() - thickness, edge.w, thickness}, color);
+        };
+        border(r, pal.group_border_outer);
+        border(r.inset(hair), pal.group_border_inner);
     }
 
     void painter::pill_button(rect r, const theme::palette& pal, chip_state state, float hover_t) noexcept {

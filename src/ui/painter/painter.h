@@ -79,7 +79,8 @@ namespace dh::ui {
 
         void chiseled_panel(rect r, math::color outer, math::color inner, math::color fill) noexcept;
 
-        void card_frame(rect r, int header_h, const theme::palette& pal, math::color accent) noexcept;
+        // only the top border is interrupted; the body fill stays continuous below it.
+        void group_frame(rect r, float title_left, float title_right, const theme::palette& pal) noexcept;
 
         void pill_button(rect r, const theme::palette& pal, chip_state state, float hover_t) noexcept;
 

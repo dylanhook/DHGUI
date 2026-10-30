@@ -99,11 +99,12 @@ namespace dh::ui::controls {
         const auto& metrics = ctx.theme().metrics();
         const float line = static_cast<float>(pnt.text_line_h());
         const rect border{m_rect.x, m_rect.y + line * 0.5f, m_rect.w, m_rect.h - line * 0.5f};
-        pnt.card_frame(border, 0, pal, ctx.theme().accent_value());
         const dh::string_view title{m_title.data(), m_title.size()};
         const float x = m_rect.x + static_cast<float>(metrics.group_title_inset);
         const float pad = static_cast<float>(metrics.gap_normal);
-        pnt.filled_rect({x - pad, m_rect.y, pnt.measure_text_w(title) + pad * 2.0f, line}, pal.group_bg);
+        const float title_left = title.empty() ? border.x : x - pad;
+        const float title_right = title.empty() ? border.x : x + pnt.measure_text_w(title) + pad;
+        pnt.group_frame(border, title_left, title_right, pal);
         pnt.text({x, m_rect.y}, title, pal.text_label);
         if (m_scroll) m_scroll->paint(ctx);
         else m_inner->paint(ctx);
